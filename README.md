@@ -1,10 +1,13 @@
 # AnimatedWebp
+
 ## 中文版
+
 把单张或者多张png序列图转成webp动态图。
 目前只支持Mac平台和webp 0.5.0版本。你可以根据需要自定义路径修改参数值。
 如果有什么交流建议，可以在Issues留下问题，也可以发邮件到guochenghaha@gmail.com
 
 ## English Version
+
 A tool generate single or a series of png to webp or animtedWebp
 
 It's only support webp version 0.5.0 on Mac. If you want custom the path, you can fork or clone the repository and change the command line value.
@@ -12,10 +15,11 @@ It's only support webp version 0.5.0 on Mac. If you want custom the path, you ca
 If you have any question, please leave message in Issues or send email to guochenghaha@gmail.com.
 
 
+
 License
 -------
 
-    Copyright 2016 TinoGuo
+    Copyright 2016 TinoGuo
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
