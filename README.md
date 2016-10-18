@@ -14,6 +14,7 @@ It's only support webp version 0.5.0 on Mac. If you want custom the path, you ca
 
 If you have any question, please leave message in Issues or send email to guochenghaha@gmail.com.
 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/_UEmh1qkc3Q/0.jpg)](https://youtu.be/_UEmh1qkc3Q "AnimatedWebp")
 
 
 License
