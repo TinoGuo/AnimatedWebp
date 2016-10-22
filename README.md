@@ -4,24 +4,19 @@
 
 把单张或者多张png序列图转成webp动态图。
 
-目前只支持Mac平台和webp 0.5.0版本。你可以根据需要自定义路径修改参数值。
+安装教程:
+1. 将webpLib文件夹的文件复制到jar同级目录
+2. 运行即可
 
-使用之前，需要先用brew安装webp库
-```bash
-brew install webp
-```
 如果有什么交流建议，可以在Issues留下问题，也可以发邮件到guochenghaha@gmail.com
 
 ## English Version
 
 A tool generate single or a series of png to webp or animtedWebp
 
-It's only support webp version 0.5.0 on Mac. If you want custom the path, you can fork or clone the repository and change the command line value.
-
-Before you use this tool, you should use commandline to install webp lib via brew
-```bash
-brew install webp
-```
+Step:
+1. move all of under webpLib dir's files to jar's dir;
+2. enjoy it
 
 If you have any question, please leave message in Issues or send email to guochenghaha@gmail.com.
 
