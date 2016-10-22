@@ -4,7 +4,7 @@
 
 把单张或者多张png序列图转成webp动态图。
 
-安装教程:
+自定义安装教程:
 1. 将webpLib文件夹的文件复制到jar同级目录
 2. 运行即可
 
@@ -14,7 +14,7 @@
 
 A tool generate single or a series of png to webp or animtedWebp
 
-Step:
+Custom install steps:
 1. move all of under webpLib dir's files to jar's dir;
 2. enjoy it
 
