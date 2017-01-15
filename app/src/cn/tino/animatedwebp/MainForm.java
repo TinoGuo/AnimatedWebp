@@ -1,9 +1,13 @@
 package cn.tino.animatedwebp;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.*;
+import java.text.NumberFormat;
 
 /**
  * mailTo:guocheng@xuxu.in
@@ -13,13 +17,15 @@ public class MainForm {
     private static final String singleFileCmd = " -frame %s +%d+0+0+0-b";
     private static JFrame frame;
     private static String encodeWebpCmd = "%s/cwebp -q %d %s -o %s";
-    private static String webpMuxCmd = "%s/webpmux %s -loop 0 -bgcolor 0,0,0,0 -o %s.webp";
+    private static String webpMuxCmd = "%s/webpmux %s -loop %d -bgcolor 0,0,0,0 -o %s.webp";
     private static String singleWebpCmd = "%s/cwebp -q %d %s -o %s";
     private JButton chooseButton;
     private JPanel panel1;
     private JButton dealButton;
     private JTextField quality;
     private JTextField framerate;
+    private JRadioButton loopRadioButton;
+    private JFormattedTextField loopCountEdit;
     private JFileChooser fc = new JFileChooser();
     private File chooseFile;
     private File localFileDir;
@@ -35,6 +41,25 @@ public class MainForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 processDeal();
+            }
+        });
+        loopRadioButton.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                loopCountEdit.setEditable(e.getStateChange() != ItemEvent.SELECTED);
+            }
+        });
+
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setParseIntegerOnly(true);
+        final NumberFormatter numberFormatter = new NumberFormatter(numberFormat);
+        numberFormatter.setAllowsInvalid(false);
+        numberFormatter.setValueClass(Integer.class);
+        numberFormatter.setCommitsOnValidEdit(true);
+        loopCountEdit.setFormatterFactory(new JFormattedTextField.AbstractFormatterFactory() {
+            @Override
+            public JFormattedTextField.AbstractFormatter getFormatter(JFormattedTextField tf) {
+                return numberFormatter;
             }
         });
 
@@ -128,6 +153,10 @@ public class MainForm {
         Process process;
         if (chooseFile != null && chooseFile.isDirectory()) {
             File[] files = chooseFile.listFiles(new ImageFileFilter(".png"));
+            if (files == null || files.length == 0) {
+                return;
+            }
+            int loopCount = loopRadioButton.isSelected() ? 0 : Integer.parseInt(loopCountEdit.getText());
             for (File file : files) {
                 String name = file.getName().replace(".png", "");
 
@@ -148,7 +177,7 @@ public class MainForm {
                 sb.append(String.format(singleFileCmd, file.getAbsolutePath(), 1000 / Integer.valueOf(framerate.getText())));
             }
             try {
-                process = runtime.exec(String.format(webpMuxCmd, localFileDir.getAbsolutePath(), sb.toString(), chooseFile.getParent() + "/" + chooseFile.getName()));
+                process = runtime.exec(String.format(webpMuxCmd, localFileDir.getAbsolutePath(), sb.toString(), loopCount, chooseFile.getParent() + "/" + chooseFile.getName()));
                 int exitVal = process.waitFor();
                 InputStream inputStream = process.getErrorStream();
                 JOptionPane.showMessageDialog(null, exitVal == 0 ? "输出路径为" + chooseFile.getAbsolutePath() : "ERROR " + InputStreamTOString(inputStream), "处理结果",
