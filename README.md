@@ -27,6 +27,11 @@ If you have any question, please leave message in Issues or send email to guoche
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/_UEmh1qkc3Q/0.jpg)](https://youtu.be/_UEmh1qkc3Q "AnimatedWebp")
 
 
+## TODO
+1. support other image type, such as .jpg or .gif, etc.
+2. speed up transform
+3. More friendly User Interface
+
 License
 -------
 
