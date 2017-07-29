@@ -2,6 +2,8 @@
 
 ## 中文版
 
+[代码原理介绍](http://www.jianshu.com/p/8dc745523e03)
+
 此项目不再维护，大家如果有制作webp动态图的需要，请移步至[AnimatedWebp2](https://github.com/TinoGuo/AnimatedWebp2)
 
 把单张或者多张png序列图转成webp动态图。
